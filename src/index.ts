@@ -4,10 +4,16 @@ import type { PluginObj } from '@babel/core';
 const CLIENT_COMPONENT_FUNCTIONS = [
   'createContext',
   'useContext',
+  'useDeferredValue',
   'useEffect',
+  'useImperativeHandle',
+  'useInsertionEffect',
   'useLayoutEffect',
   'useReducer',
+  'useRef',
   'useState',
+  'useSyncExternalStore',
+  'useTransition',
 ];
 
 function isClientComponentImport(node: Babel.types.ImportSpecifier) {
@@ -35,6 +41,7 @@ export default function ({ types: t }: typeof Babel): PluginObj {
           for (const directive of programPath.node.directives) {
             if (directive.value.value === 'use client') {
               // Can skip since it's already been added.
+              programPath.stop();
               return;
             }
           }
@@ -72,6 +79,7 @@ export default function ({ types: t }: typeof Babel): PluginObj {
                   obj.node.name === state.get('ReactImportNamespaceName')
                 ) {
                   state.set('SetUseClientDirective', true);
+                  memberExpressionPath.stop();
                 }
               }
             },
