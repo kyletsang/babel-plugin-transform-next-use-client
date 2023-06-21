@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/kyletsang/babel-plugin-transform-next-use-client/compare/v1.0.0...v1.0.1) (2023-06-21)
+
+
+### Bug Fixes
+
+* add more client apis ([#3](https://github.com/kyletsang/babel-plugin-transform-next-use-client/issues/3)) ([d3f2a5b](https://github.com/kyletsang/babel-plugin-transform-next-use-client/commit/d3f2a5bdf72fa7197671b8cd5de31fbac3799e3f))
+
 # 1.0.0 (2023-06-20)
 
 
