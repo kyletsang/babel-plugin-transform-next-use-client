@@ -1,6 +1,10 @@
 import type * as Babel from '@babel/core';
 import type { PluginObj } from '@babel/core';
 
+interface PluginOptions {
+  customClientImports?: string[] | undefined;
+}
+
 const CLIENT_COMPONENT_FUNCTIONS = [
   'createContext',
   'useContext',
@@ -16,8 +20,14 @@ const CLIENT_COMPONENT_FUNCTIONS = [
   'useTransition',
 ];
 
-function isClientComponentImport(node: Babel.types.ImportSpecifier) {
-  return CLIENT_COMPONENT_FUNCTIONS.includes(node.local.name);
+function isClientComponentImport(
+  node: Babel.types.ImportSpecifier,
+  customClientImports?: string[] | undefined
+) {
+  return (
+    CLIENT_COMPONENT_FUNCTIONS.includes(node.local.name) ||
+    customClientImports?.includes(node.local.name)
+  );
 }
 
 function isClientComponentExpression(
@@ -49,7 +59,12 @@ export default function ({ types: t }: typeof Babel): PluginObj {
           programPath.traverse({
             ImportSpecifier(importSpecifierPath) {
               // Checks for any client API imports.
-              if (isClientComponentImport(importSpecifierPath.node)) {
+              if (
+                isClientComponentImport(
+                  importSpecifierPath.node,
+                  (state.opts as PluginOptions).customClientImports
+                )
+              ) {
                 state.set('SetUseClientDirective', true);
                 importSpecifierPath.stop();
               }
