@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/kyletsang/babel-plugin-transform-next-use-client/compare/v1.0.1...v1.1.0) (2023-06-25)
+
+
+### Features
+
+* add `customClientImports` option ([#5](https://github.com/kyletsang/babel-plugin-transform-next-use-client/issues/5)) ([1623767](https://github.com/kyletsang/babel-plugin-transform-next-use-client/commit/16237670c3c427ceeb08ea2a5ffb62cb8b78a9c9))
+
 ## [1.0.1](https://github.com/kyletsang/babel-plugin-transform-next-use-client/compare/v1.0.0...v1.0.1) (2023-06-21)
 
 
