@@ -21,7 +21,7 @@ const CLIENT_COMPONENT_FUNCTIONS = [
 ];
 
 function isClientComponentImport(
-  node: Babel.types.ImportSpecifier,
+  node: Babel.types.ImportSpecifier | Babel.types.ImportDefaultSpecifier,
   customClientImports?: string[] | undefined
 ) {
   return (
@@ -59,6 +59,7 @@ export default function ({ types: t }: typeof Babel): PluginObj {
           programPath.traverse({
             ImportSpecifier(importSpecifierPath) {
               // Checks for any client API imports.
+              // import { name } from 'lib'
               if (
                 isClientComponentImport(
                   importSpecifierPath.node,
@@ -67,6 +68,19 @@ export default function ({ types: t }: typeof Babel): PluginObj {
               ) {
                 state.set('SetUseClientDirective', true);
                 importSpecifierPath.stop();
+              }
+            },
+            ImportDefaultSpecifier(importDefaultSpecifierPath) {
+              // Checks for any client API default imports.
+              // import name from 'lib'
+              if (
+                isClientComponentImport(
+                  importDefaultSpecifierPath.node,
+                  (state.opts as PluginOptions).customClientImports
+                )
+              ) {
+                state.set('SetUseClientDirective', true);
+                importDefaultSpecifierPath.stop();
               }
             },
             ImportDeclaration(importDeclarationPath) {
