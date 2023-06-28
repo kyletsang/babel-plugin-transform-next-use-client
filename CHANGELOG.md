@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/kyletsang/babel-plugin-transform-next-use-client/compare/v1.1.0...v1.1.1) (2023-06-28)
+
+
+### Bug Fixes
+
+* fix default imports ([#8](https://github.com/kyletsang/babel-plugin-transform-next-use-client/issues/8)) ([0e24087](https://github.com/kyletsang/babel-plugin-transform-next-use-client/commit/0e24087b782129f2c595a3e1fcacf5f646109b5a))
+
 # [1.1.0](https://github.com/kyletsang/babel-plugin-transform-next-use-client/compare/v1.0.1...v1.1.0) (2023-06-25)
 
 

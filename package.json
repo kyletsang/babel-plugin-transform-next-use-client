@@ -1,6 +1,6 @@
 {
   "name": "babel-plugin-transform-next-use-client",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A Babel plugin that adds the \"use client\" directive for React components that are using client-only APIs",
   "main": "dist/index.js",
   "files": [
