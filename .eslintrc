@@ -1,0 +1,4 @@
+{
+  "extends": "@kyletsang/eslint-config",
+  "ignorePatterns": ["tests/", "dist/"]
+}

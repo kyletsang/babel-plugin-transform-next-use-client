@@ -10,7 +10,7 @@ permissions:
 
 jobs:
   test:
-    name: Run tests
+    name: Run validation
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -24,6 +24,9 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+
+      - name: Run lint
+        run: npm run lint
 
       - name: Run tests
         run: npm run test
