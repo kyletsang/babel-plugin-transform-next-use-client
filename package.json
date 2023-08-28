@@ -37,7 +37,7 @@
     "@kyletsang/eslint-config": "^1.1.0",
     "@kyletsang/semantic-release-config": "^1.0.0",
     "@types/jest": "^29.5.3",
-    "@types/react": "^18.2.18",
+    "@types/react": "^18.2.21",
     "babel-jest": "^29.6.2",
     "babel-plugin-tester": "^11.0.4",
     "eslint": "^8.46.0",
