@@ -80,5 +80,4 @@ function Component() {
   (0, _react.useEffect)(function () {}, []);
   return /*#__PURE__*/ React.createElement("div", null, state);
 }
-var _default = Component;
-exports["default"] = _default;
+var _default = (exports["default"] = Component);

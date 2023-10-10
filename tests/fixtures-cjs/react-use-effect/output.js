@@ -74,5 +74,4 @@ function Component() {
   React.useEffect(function () {}, []);
   return null;
 }
-var _default = Component;
-exports["default"] = _default;
+var _default = (exports["default"] = Component);
