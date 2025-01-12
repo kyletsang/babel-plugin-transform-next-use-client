@@ -22,7 +22,7 @@ const CLIENT_COMPONENT_FUNCTIONS = [
 
 function isClientComponentImport(
   node: Babel.types.ImportSpecifier | Babel.types.ImportDefaultSpecifier,
-  customClientImports?: string[] | undefined
+  customClientImports?: string[] | undefined,
 ) {
   return (
     CLIENT_COMPONENT_FUNCTIONS.includes(node.local.name) ||
@@ -31,7 +31,7 @@ function isClientComponentImport(
 }
 
 function isClientComponentExpression(
-  node: Babel.types.PrivateName | Babel.types.Expression
+  node: Babel.types.PrivateName | Babel.types.Expression,
 ) {
   return (
     node.type === 'Identifier' && CLIENT_COMPONENT_FUNCTIONS.includes(node.name)
@@ -63,7 +63,7 @@ export default function ({ types: t }: typeof Babel): PluginObj {
               if (
                 isClientComponentImport(
                   importSpecifierPath.node,
-                  (state.opts as PluginOptions).customClientImports
+                  (state.opts as PluginOptions).customClientImports,
                 )
               ) {
                 state.set('SetUseClientDirective', true);
@@ -76,7 +76,7 @@ export default function ({ types: t }: typeof Babel): PluginObj {
               if (
                 isClientComponentImport(
                   importDefaultSpecifierPath.node,
-                  (state.opts as PluginOptions).customClientImports
+                  (state.opts as PluginOptions).customClientImports,
                 )
               ) {
                 state.set('SetUseClientDirective', true);
@@ -92,7 +92,7 @@ export default function ({ types: t }: typeof Babel): PluginObj {
                     // Store custom namespace ie. "import * as CustomReact from 'react'"
                     state.set(
                       'ReactImportNamespaceName',
-                      specifier.get('local').node.name
+                      specifier.get('local').node.name,
                     );
                   }
                 }
